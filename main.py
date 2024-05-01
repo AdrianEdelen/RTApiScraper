@@ -16,7 +16,11 @@ def download_image(url, path):
     return "Already exists"
 
 def get_path_structure(url, base_dir, human_readable, slug, size, dry_run=False):
-    normalized_url = url.replace("dev.cdn.roosterteeth.com", "cdn.roosterteeth.com")
+    
+    if 'dev.cdn' in url:
+        a = True
+    #normalized_url = url.replace("dev.cdn.roosterteeth.com", "cdn.roosterteeth.com")
+    normalized_url = url.replace("s3.amazonaws.com/dev.cdn.roosterteeth.com", "cdn.roosterteeth.com")
 
     if human_readable:
         full_path = os.path.join(base_dir, slug)
